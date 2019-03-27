@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta content="lightgray"
+				name="theme-color" />
+		<meta content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,width=device-width"
+				name="viewport" />
+		<title>Thumbnail Generator</title>
+		<link href="./style.css" rel="stylesheet" />
+		<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+		<script defer
+				src="./script.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<header id="header">
+				<div id="title">Thumbnail Generator</div>
+			</header>
+			<main id="main">
+				<button id="button">動画を選択する</button>
+				<div id="thumbnail"></div>
+			</main>
+		</div>
+		<input id="file" type="file" />
+		<video id="video"></video>
+		<canvas id="canvas"></canvas>
+	</body>
+</html>
