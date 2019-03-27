@@ -23,9 +23,7 @@
 	file.addEventListener("change",function(event){
 		const selected=this.files[0];
 		video.src=URL.createObjectURL(selected);
-		rootRef.put(selected).then(function(snapshot){
-			
-		});
+		rootRef.child(selected.name).put(selected);
 	},false);
 	video.addEventListener("loadeddata",function(event){
 		this.currentTime=0;
