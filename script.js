@@ -21,9 +21,13 @@
 		file.click();
 	},false);
 	file.addEventListener("change",function(event){
-		const selected=this.files[0];
+		const selected=event.target.files[0];
 		video.src=URL.createObjectURL(selected);
-		rootRef.child(selected.name).put(selected);
+		rootRef.child(selected.name).put(selected).then(function(snapshot){
+			window.alert("ファイル: "+selected.name+"のサムネイルを作成します。");
+		}).catch(function(error){
+			window.alert("エラー\n"+error);
+		});
 	},false);
 	video.addEventListener("loadeddata",function(event){
 		this.currentTime=0;
