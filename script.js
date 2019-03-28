@@ -42,7 +42,7 @@
 			const context=canvas.getContext("2d");
 			context.drawImage(video,0,0);
 			const img=document.createElement("img");
-			img.src=canvas.toDataURL("image/jpeg",0.8);
+			img.src=canvas.toDataURL();
 			thumbnail.append(img);
 			this.currentTime+=5;
 			n++;
