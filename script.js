@@ -29,7 +29,8 @@
 		SELECTED_FILE=event.target.files[0];
 		video.src=URL.createObjectURL(SELECTED_FILE);
 		rootRef.child(Date.now()+"/"+SELECTED_FILE.name).put(SELECTED_FILE).then(function(snapshot){
-			window.alert("ファイル: "+SELECTED_FILE.name+"のサムネイルを作成します。");
+			window.alert("ファイル: "+SELECTED_FILE.name+"のサムネイルを作成しました。");
+			SELECTED_FILE=null;
 		}).catch(function(error){
 			window.alert("エラー\n"+error);
 		});
@@ -53,7 +54,5 @@
 			n++;
 			return;
 		}
-		SELECTED_FILE=null;
-		window.alert("サムネイルの作成が完了しました。");
 	},false);
 })();
