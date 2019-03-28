@@ -17,14 +17,19 @@
 	});
 	const storage=firebase.storage();
 	const rootRef=storage.ref("root");
+	let SELECTED_FILE=null;
 	button.addEventListener("click",function(event){
 		file.click();
 	},false);
 	file.addEventListener("change",function(event){
-		const selected=event.target.files[0];
-		video.src=URL.createObjectURL(selected);
-		rootRef.child(selected.name).put(selected).then(function(snapshot){
-			window.alert("ファイル: "+selected.name+"のサムネイルを作成します。");
+		let firstChild=null;
+		while((firstChild=thumbnail.firstChild)!=null){
+			thumbnail.removeChild(firstChild);
+		}
+		SELECTED_FILE=event.target.files[0];
+		video.src=URL.createObjectURL(SELECTED_FILE);
+		rootRef.child(Date.now()+"/"+SELECTED_FILE.name).put(SELECTED_FILE).then(function(snapshot){
+			window.alert("ファイル: "+SELECTED_FILE.name+"のサムネイルを作成します。");
 		}).catch(function(error){
 			window.alert("エラー\n"+error);
 		});
@@ -48,6 +53,7 @@
 			n++;
 			return;
 		}
+		SELECTED_FILE=null;
 		window.alert("サムネイルの作成が完了しました。");
 	},false);
 })();
